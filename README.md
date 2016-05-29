@@ -14,28 +14,60 @@ gem 'tocaro_webhook'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle install
+```
 
-Or install it yourself as:
+install palne ruby
 
-    $ gem install tocaro_webhook
+```
+$ gem install tocaro_webhook
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Call TocaroWebhook::Sender class.
 
-## Development
+```ruby
+require 'tocaro_webhook'
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+webhook_sender = TocaroWebhook::Sender.new('your api key')
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+exec send message
 
-## Contributing
+```ruby
+webhook_sender.payload.add_attachment(title: "title", value: "value", image_url: "htttp://image_url.com")
+# or some attribute
+# webhook_sender.payload.add_attachment(title: "title")
+# webhook_sender.payload.add_attachment(value: "value")
+# webhook_sender.payload.add_attachment(value: "value", image_url: "htttp://image_url.com")
+webhook_sender.exec
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tocaro_webhook. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+some attachments
 
+```ruby
+webhook_sender.payload.add_attachment(title: "title", value: "value", image_url: "http://image_url.com")
+webhook_sender.payload.add_attachment(image_url: "http://image_url.com")
+webhook_sender.payload.add_attachment(title: "title", value: "value")
 
-## License
+webhook_sender.exec
+```
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+return HTTP response class.
+
+```ruby
+res = webhook_sender.exec
+res.code # => "200"
+```
+
+## test
+
+Send test exec when .env file write your webhook key.
+Env file use dotenv gem. (https://github.com/bkeepers/dotenv)
+
+```.env
+TEST_TOCARO_WEB_HOOK_KEY="your web hook key"
+```
 
