@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "tocaro_webhook"
   spec.version       = TocaroWebhook::VERSION
   spec.authors       = ["megaya"]
-  spec.email         = ["tomoya@ryogeisya.jp"]
+  spec.email         = ["tomoya.anpan.0403@gmail.com"]
 
   spec.summary       = %q{tocaro webhook for ruby}
-  spec.description   = %q{This gem is tocaro webhook ruby wrapper. Tocaro: https://tocaro.im/}
+  spec.description   = %q{This gem is tocaro webhook wrapper. Tocaro: https://tocaro.im/}
   spec.homepage      = "http://biboroku.megaya.net/"
   spec.license       = "MIT"
 

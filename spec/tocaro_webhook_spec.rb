@@ -23,7 +23,7 @@ describe TocaroWebhook do
       end
 
       it "detach payload" do
-        payload = @sender.new_payload
+        payload = TocaroWebhook::Payload.new
         payload.add_attachment(title: "title", value: "value", image_url: "")
         @sender.payload = payload
         res = @sender.exec
