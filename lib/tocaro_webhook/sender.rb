@@ -43,9 +43,5 @@ module TocaroWebhook
     def payload
       @payload ||= TocaroWebhook::Payload.new
     end
-
-    def new_payload
-      @payload = TocaroWebhook::Payload.new
-    end
   end
 end

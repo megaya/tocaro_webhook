@@ -45,8 +45,6 @@ module TocaroWebhook
         end
 
         class Attachment
-          attr_accessor :title, :value, :image_url
-
           def initialize(options={}, &block)
             @title     = options[:title]     || ""
             @value     = options[:value]     || ""

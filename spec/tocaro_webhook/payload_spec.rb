@@ -4,7 +4,7 @@ require "tocaro_webhook"
 describe TocaroWebhook::Payload do
   before do
     @sender = TocaroWebhook::Sender.new("")
-    @payload = @sender.new_payload
+    @payload = TocaroWebhook::Payload.new
   end
 
   describe "add_attachment" do
@@ -15,9 +15,9 @@ describe TocaroWebhook::Payload do
 
       @payload.add_attachment(title: title, value: value, image_url: image_url)
       attachment = @payload.attachments[0]
-      expect(attachment.title).to eq title
-      expect(attachment.value).to eq value
-      expect(attachment.image_url).to eq image_url
+      expect(attachment.instance_variable_get('@title')).to eq title
+      expect(attachment.instance_variable_get('@value')).to eq value
+      expect(attachment.instance_variable_get('@image_url')).to eq image_url
     end
 
     it "count attachments" do
